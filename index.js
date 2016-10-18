@@ -12,10 +12,7 @@ var mysql  = require('mysql').createConnection({
 });
 
 var access, access2, match, html= "";
-//cara boros
-/* var routes = require("routes");
-varroute = routes(); */
-//cara simpel
+
 var routes = require('routes')();
 //menambahkan route dari pathname / dengan fungsi untuk request dan respond
 routes.addRoute('/', function(req,res){
