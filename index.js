@@ -14,11 +14,11 @@ var mysql  = require('mysql').createConnection({
 var access, access2, match, html= "";
 
 var routes = require('routes')();
-//menambahkan route dari pathname / dengan fungsi untuk request dan respond
+
 routes.addRoute('/', function(req,res){
 	res.writeHead(200, {"Content-Type" : "text/plain"});
 		var link = qs.parse(access.query);
-		//console.log(link);
+
 		if(req.method == "POST"){
 			var isi="";
 			req.on('data', function(konten){
@@ -29,20 +29,17 @@ routes.addRoute('/', function(req,res){
 			   mysql.query("insert into mahasiswa set ? ", data, function (error, results, fields) {
 					if (error)
 						throw error;
-					//console.log(results);
-					/* results.forEach(function(item){
-						
-					}); */
+
 					res.writeHead(302, {"Location" : "/mahasiswa"});
 					res.end();
 				});
-				//res.end(JSON.stringify(data)+" \n "+isi);
+
 		   });
 		}else{
 			res.end(JSON.stringify(link));
 		}
 });
-//menggunakan opsional halaman dengan menggunakan :<namanya>?
+
 routes.addRoute('/about/:nama?/:alamat?', function(req,res){
 	console.log(this.params.nama);
 	if(this.params.nama != null && this.params.alamat != null){
@@ -128,7 +125,7 @@ routes.addRoute('/input', function(req,res){
 		alamat : "Yogyakarta",
 		jurusan : ["TI", "SI", "MI", "TK", "KA"]
 	});
-	//fs.createReadStream('./app/kirimdata.html').pipe(res);
+
 	res.end(html);
 });
 
@@ -144,15 +141,5 @@ http.createServer(function(req, res){
 			res.end("halaman tidak ada");
 		}
 	
-	/* var access = url.parse(req.url);
-	//console.log(req);
-	if(access.pathname != "/favicon.ico" && access.pathname == "/" ){
-		res.writeHead(200, {"Content-Type" : "text/plain"});
-		//console.log(access);
-	}else if(access.pathname == "/kirim"){
-	}else{
-		res.writeHead(404, {"Content-Type" : "text/plain"});
-		res.end("Halaman tidak ada");
-	}*/
 }).listen(8888);
 console.log("lagi jalan");
