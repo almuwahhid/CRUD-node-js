@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %} MAHASISWA {% endblock %}
+
+{% block content %}
+		<h2>Mahasiswa</h2>
+		<table border="1" style="border-collapse:collapse">
+			<thead>
+				<tr>
+					<th style="padding:5px">No</th>
+					<th style="padding:5px">Nama</th>
+					<th style="padding:5px">Alamat</th>
+					<th style="padding:5px">Aksi</th>
+				<tr>
+			</thead>
+			<tbody>
+		{% for datas in data%}
+				<tr>
+					<td></td>
+					<td style="padding:5px">{{datas.nama}}</td>
+					<td style="padding:5px">{{datas.alamat}}</td>
+					<td style="padding:5px"><a href="/mahasiswa/{{datas.id}}">Ubah</a> || <a href="/mahasiswa/{{datas.id}}/hapus">Hapus</a></td>
+				<tr>
+		{% endfor%}
+			<tbody>
+		</table>
+{% endblock %}

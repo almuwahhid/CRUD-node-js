@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %} Ini input men {% endblock %}
+
+{% block content %}
+		<h1>INI HALAMAN PERTAMA KU</h1>
+		<h2>Hiks Aku Sedih kalo kaya gini</h2>
+		<form method="post" action="/">
+				<p>
+					<input type="text" name="nama" id="name" value="{{nama}}"></input><br> 
+				</p>
+				<p>
+					<textarea type="text" name="alamat" id="name">{{alamat}}</textarea>
+				</p>
+				<p>
+				<!--
+					{% for jurusans in jurusan%}
+					<input type="radio" name="jurusan" value="{{jurusans}}">{{jurusans}}</input> &nbsp;
+					{%endfor%}
+				</p>
+				-->
+				<p>
+					<input type="submit" value="Simpan">
+				</p>			
+		</form>
+{% endblock %}
